@@ -2,7 +2,7 @@
   <img src="https://i.ibb.co/Z1mL67Sj/toolio-automation-logo.png" alt="Toolio Logo" width="120" />
   <h1>Toolio Studio</h1>
   <p>
-    <img src="https://img.shields.io/badge/version-1.0.1-blue.svg?style=for-the-badge" alt="Version" />
+    <img src="https://img.shields.io/badge/version-1.0.4-blue.svg?style=for-the-badge" alt="Version" />
     <img src="https://img.shields.io/badge/Electron-35.7.5-47848F.svg?style=for-the-badge&logo=electron" alt="Electron" />
     <img src="https://img.shields.io/badge/Platform-Windows-0078D6.svg?style=for-the-badge&logo=windows" alt="Platform" />
   </p>
@@ -41,7 +41,11 @@ Automate task selection in the G-Labs dashboard.
 *   **Smart Selection:** Select or deselect tasks using custom lists, numerical ranges (e.g., 10-15), or alternating patterns.
 *   **Auto-Scanning:** Keeps scanning the visible table until all desired tasks are found and interacted with.
 
-
+### 🖌️ 5. Whiteboard Animator
+Easily convert any image into a stunning Whiteboard Animation video for faceless channels.
+*   **18 Hand Styles:** Choose from 18 different hand-with-pen styles to draw your images, or opt for a clean animation without a hand.
+*   **Advanced Timing Controls:** Full control over the total video duration and end-of-video pause time.
+*   **Color Reveal Settings:** Customize the exact timing and duration for colors to smoothly appear after the drawing finishes.
 
 ---
 <div align="center">
