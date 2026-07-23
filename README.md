@@ -2,7 +2,7 @@
   <img src="https://i.ibb.co/Z1mL67Sj/toolio-automation-logo.png" alt="Toolio Logo" width="120" />
   <h1>Toolio Studio</h1>
   <p>
-    <img src="https://img.shields.io/badge/version-1.0.4-blue.svg?style=for-the-badge" alt="Version" />
+    <img src="https://img.shields.io/badge/version-1.0.6-blue.svg?style=for-the-badge" alt="Version" />
     <img src="https://img.shields.io/badge/Electron-35.7.5-47848F.svg?style=for-the-badge&logo=electron" alt="Electron" />
     <img src="https://img.shields.io/badge/Platform-Windows-0078D6.svg?style=for-the-badge&logo=windows" alt="Platform" />
   </p>
