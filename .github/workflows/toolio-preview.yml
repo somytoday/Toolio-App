@@ -40,16 +40,6 @@ jobs:
               --token="$VERCEL_TOKEN"
           fi
 
-      - name: Make this preview publicly accessible
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_TELEMETRY_DISABLED: '1'
-        run: |
-          npx --yes vercel@59.10.0 project protection disable toolio-live \
-            --sso \
-            --scope=tahirs-projects-c4817c0a \
-            --token="$VERCEL_TOKEN"
-
       - name: Deploy preview to Vercel
         id: deploy
         env:
@@ -95,6 +85,35 @@ jobs:
           echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
           echo "### Toolio preview" >> "$GITHUB_STEP_SUMMARY"
           echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Smoke test deployed routes
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.url }}
+        shell: bash
+        run: |
+          routes=(
+            "/"
+            "/store/"
+            "/store/product.html?product=toolio-premium"
+            "/download/"
+            "/admin/"
+          )
+
+          for route in "${routes[@]}"; do
+            status="$(curl --silent --show-error --location --output /dev/null --write-out '%{http_code}' "${PREVIEW_URL}${route}")"
+            if [ "$status" != "200" ]; then
+              echo "::error title=Toolio route failed::${route} returned HTTP ${status}"
+              exit 1
+            fi
+          done
+
+          home_html="$(curl --silent --show-error --fail --location "${PREVIEW_URL}/")"
+          if ! grep -qi "TOOLIO" <<< "$home_html"; then
+            echo "::error title=Unexpected Toolio homepage::The deployed homepage does not contain the Toolio brand."
+            exit 1
+          fi
+
+          echo "::notice title=Toolio smoke test::All five preview routes returned HTTP 200 and the homepage contains the Toolio brand."
 
       - name: Show preview URL
         run: echo "${{ steps.deploy.outputs.url }}"
