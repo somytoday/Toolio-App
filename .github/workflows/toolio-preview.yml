@@ -40,6 +40,16 @@ jobs:
               --token="$VERCEL_TOKEN"
           fi
 
+      - name: Make this preview publicly accessible
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TELEMETRY_DISABLED: '1'
+        run: |
+          npx --yes vercel@59.10.0 project protection disable toolio-live \
+            --sso \
+            --scope=tahirs-projects-c4817c0a \
+            --token="$VERCEL_TOKEN"
+
       - name: Deploy preview to Vercel
         id: deploy
         env:
