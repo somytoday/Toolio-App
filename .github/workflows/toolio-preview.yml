@@ -26,6 +26,20 @@ jobs:
         with:
           node-version: 22
 
+      - name: Ensure Vercel project exists
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TELEMETRY_DISABLED: '1'
+        shell: bash
+        run: |
+          if ! npx --yes vercel@59.10.0 project inspect toolio-live \
+            --scope=tahirs-projects-c4817c0a \
+            --token="$VERCEL_TOKEN" >/dev/null 2>&1; then
+            npx --yes vercel@59.10.0 project add toolio-live \
+              --scope=tahirs-projects-c4817c0a \
+              --token="$VERCEL_TOKEN"
+          fi
+
       - name: Deploy preview to Vercel
         id: deploy
         env:
@@ -46,6 +60,7 @@ jobs:
             --archive=tgz \
             --target=preview \
             --project=toolio-live \
+            --scope=tahirs-projects-c4817c0a \
             --token="$VERCEL_TOKEN" 2>&1)"
           deploy_status=$?
           set -e
