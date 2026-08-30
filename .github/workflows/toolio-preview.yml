@@ -74,7 +74,13 @@ jobs:
             exit "$deploy_status"
           fi
 
-          deployment_url="$(printf '%s\n' "$safe_output" | tail -n 1)"
+          deployment_url="$(printf '%s\n' "$safe_output" | grep -Eo 'https://[^[:space:]]+\.vercel\.app' | tail -n 1)"
+          if [ -z "$deployment_url" ]; then
+            echo "::error title=Vercel preview URL missing::Deployment succeeded but no vercel.app URL was found."
+            exit 1
+          fi
+
+          echo "::notice title=Toolio preview::$deployment_url"
 
           echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
           echo "### Toolio preview" >> "$GITHUB_STEP_SUMMARY"
