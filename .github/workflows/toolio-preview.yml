@@ -38,13 +38,28 @@ jobs:
             exit 1
           fi
 
-          deployment_url="$(npx --yes vercel@59.10.0 deploy website \
+          set +e
+          deploy_output="$(npx --yes vercel@59.10.0 deploy website \
+            --debug \
             --yes \
             --no-color \
             --archive=tgz \
             --target=preview \
             --project=toolio-live \
-            --token="$VERCEL_TOKEN")"
+            --token="$VERCEL_TOKEN" 2>&1)"
+          deploy_status=$?
+          set -e
+
+          safe_output="${deploy_output//$VERCEL_TOKEN/[REDACTED]}"
+          printf '%s\n' "$safe_output"
+
+          if [ "$deploy_status" -ne 0 ]; then
+            annotation="$(printf '%s' "$safe_output" | tail -n 20 | tr '\n' ' ' | sed 's/%/%25/g; s/\r/%0D/g; s/\n/%0A/g')"
+            echo "::error title=Vercel deployment failed::$annotation"
+            exit "$deploy_status"
+          fi
+
+          deployment_url="$(printf '%s\n' "$safe_output" | tail -n 1)"
 
           echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
           echo "### Toolio preview" >> "$GITHUB_STEP_SUMMARY"
