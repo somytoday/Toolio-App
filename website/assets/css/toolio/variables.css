@@ -1,0 +1,101 @@
+﻿/* Design System - Variables and Tokens */
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+
+   HAJI Labs â€” Design System (Core Styles)
+
+   Premium dark theme with glassmorphism
+
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+
+
+/* â”€â”€ Tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+:root {
+
+    --bg-primary: #060814;
+
+    --bg-secondary: rgba(13, 17, 30, 0.6);
+
+    --bg-tertiary: #141929;
+
+    --bg-card: rgba(13, 17, 30, 0.55);
+
+    --border-color: rgba(255, 255, 255, 0.08);
+
+    --border-focus: #5b8af0;
+
+
+
+    --accent-purple: #8b5cf6;
+
+    --accent-blue: #3b82f6;
+
+    --accent-indigo: #6366f1;
+
+    --accent-orange: #f97316;
+
+    --accent-green: #10b981;
+
+    --accent-red: #ef4444;
+
+    --accent-cyan: #22d3ee;
+    --accent-amber: #f59e0b;
+
+
+
+    --text-primary: #f3f4f6;
+
+    --text-secondary: #a1a1aa;
+
+    --text-muted: #71717a;
+
+
+
+    --font-sans: 'Nirmala UI', 'Microsoft YaHei', system-ui, sans-serif;
+
+    --font-mono: 'JetBrains Mono', monospace;
+
+
+
+    --radius-sm: 6px;
+
+    --radius-md: 10px;
+
+    --radius-lg: 16px;
+
+    --radius-xl: 20px;
+
+
+
+    --glow-indigo: 0 0 20px rgba(99, 102, 241, 0.2);
+
+    --glow-purple: 0 0 20px rgba(139, 92, 246, 0.2);
+
+    --glow-green: 0 0 15px rgba(16, 185, 129, 0.15);
+
+
+
+    --transition-fast: 150ms ease;
+
+    --transition-base: 250ms ease;
+}
+
+body[data-theme="soft-light"] {
+    --bg-primary: #f8fafc; /* Ø®Ù„ÙÙŠØ© Ø±Ø¦ÙŠØ³ÙŠØ© Ø¨ÙŠØ¶Ø§Ø¡ Ù†Ù‚ÙŠØ© ÙˆÙ…Ø±ÙŠØ­Ø© */
+    --bg-secondary: #ffffff; /* Ø£Ø¨ÙŠØ¶ Ù†Ø§ØµØ¹ Ù„Ù„Ø¨Ø·Ø§Ù‚Ø§Øª ÙˆØ§Ù„Ø£Ù‚Ø³Ø§Ù… */
+    --bg-tertiary: #f1f5f9; /* ØªØ¸Ù„ÙŠÙ„ Ø®ÙÙŠÙ Ø¬Ø¯Ø§Ù‹ Ù„ÙØµÙ„ Ø§Ù„Ø£Ù‚Ø³Ø§Ù… */
+    --bg-card: rgba(255, 255, 255, 0.85); /* Ø¨Ø·Ø§Ù‚Ø§Øª Ø²Ø¬Ø§Ø¬ÙŠØ© Ù†Ø§ØµØ¹Ø© */
+    --border-color: rgba(0, 0, 0, 0.08); /* Ø­Ø¯ÙˆØ¯ Ø®ÙÙŠÙØ© Ø¬Ø¯Ø§Ù‹ ÙˆØ£Ù†ÙŠÙ‚Ø© */
+    --border-focus: var(--accent-purple); /* Ù„ÙˆÙ† Ø§Ù„ØªØ±ÙƒÙŠØ² Ø§Ù„Ø£Ø³Ø§Ø³ÙŠ */
+
+    --text-primary: #0f172a; /* Ù†ØµÙˆØµ Ø³ÙˆØ¯Ø§Ø¡ ÙˆØ§Ø¶Ø­Ø© Ø¬Ø¯Ø§Ù‹ */
+    --text-secondary: #475569; /* Ù†ØµÙˆØµ Ø«Ø§Ù†ÙˆÙŠØ© Ø¨Ø¯ÙˆÙ† Ø±Ù…Ø§Ø¯ÙŠ Ù…Ø²Ø¹Ø¬ */
+    --text-muted: #94a3b8; /* Ù†ØµÙˆØµ Ø®Ø§ÙØªØ© Ù…ØªÙ†Ø§Ø³Ù‚Ø© */
+
+    --glow-indigo: 0 10px 30px rgba(99, 102, 241, 0.15);
+    --glow-purple: 0 10px 30px rgba(139, 92, 246, 0.15);
+    --glow-green: 0 10px 25px rgba(16, 185, 129, 0.15);
+}
+

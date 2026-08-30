@@ -1,0 +1,14 @@
+/* ─────────────────────────────────────────────────────────────────
+   components.css — Entry point: imports all component partials.
+   Edit the specific partial file instead of this file.
+   ───────────────────────────────────────────────────────────────── */
+
+@import 'components/layout.css';      /* Main Content, Page Routing                    */
+@import 'components/typography.css';  /* Headers, Glass Cards                          */
+@import 'components/badges.css';      /* Badges, Stats Grid                            */
+@import 'components/buttons.css';     /* Buttons (all variants)                        */
+@import 'components/forms.css';       /* Form Controls, Textarea, Cards, Placeholder   */
+@import 'components/generation.css';  /* Generation UI: Controls, Prompt, Results      */
+@import 'components/feedback.css';    /* Toast Notifications, Loading Skeleton         */
+@import 'components/animations.css';  /* Transitions, Motion, Progress, Warning Banner */
+@import 'components/dialogs.css';     /* Queue Dialogs, Premium Banner, App Guard      */

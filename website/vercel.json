@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/store", "destination": "/store/index.html" },
+    { "source": "/store/", "destination": "/store/index.html" },
+    { "source": "/download", "destination": "/download/index.html" },
+    { "source": "/download/", "destination": "/download/index.html" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" }
+  ]
+}

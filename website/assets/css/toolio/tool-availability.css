@@ -1,0 +1,91 @@
+.main-content { position: relative; }
+
+.tool-availability-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 52px 28px 28px;
+    color: #eef8ff;
+    background: rgba(2, 8, 14, 0.84);
+    backdrop-filter: blur(8px);
+}
+
+.tool-availability-overlay.hidden { display: none; }
+.tool-availability-watermark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    color: rgba(255, 190, 73, 0.045);
+    font: 900 clamp(78px, 13vw, 220px)/1 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    pointer-events: none;
+    user-select: none;
+}
+
+.tool-availability-card {
+    position: relative;
+    width: min(620px, 92%);
+    border: 1px solid rgba(255, 190, 73, 0.32);
+    border-radius: 24px;
+    padding: 42px 46px;
+    text-align: center;
+    background: linear-gradient(155deg, rgba(18, 27, 38, 0.96), rgba(7, 14, 23, 0.98));
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55), 0 0 42px rgba(255, 180, 52, 0.08);
+}
+
+.tool-availability-card:focus-visible,
+.tool-availability-overlay.is-subscription:focus-visible {
+    outline: 3px solid #67a7ff;
+    outline-offset: 5px;
+}
+
+.tool-availability-icon {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(255, 190, 73, 0.4);
+    border-radius: 22px;
+    color: #ffc867;
+    background: rgba(255, 184, 77, 0.1);
+    font-size: 30px;
+}
+
+.tool-availability-kicker { margin: 0 0 10px; color: #ffc867; font: 800 11px/1.4 'JetBrains Mono', monospace; letter-spacing: 0.18em; }
+.tool-availability-card h1 { margin: 0; color: #f4fbff; font-size: clamp(28px, 3vw, 42px); line-height: 1.14; }
+.tool-availability-message { max-width: 500px; margin: 16px auto 0; color: #9db0c1; font-size: 15px; line-height: 1.7; }
+.tool-availability-note { margin: 22px 0 0; color: #71889a; font-size: 12px; }
+.tool-availability-action { margin-top: 24px; border: 1px solid rgba(255, 190, 73, 0.42); border-radius: 12px; padding: 11px 22px; color: #111820; background: #ffc867; font-weight: 800; cursor: pointer; }
+.tool-availability-action[hidden] { display: none; }
+
+.tool-availability-overlay.is-subscription { cursor: pointer; }
+.tool-availability-overlay.is-subscription .tool-availability-card { border-color: rgba(98, 145, 255, 0.38); box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55), 0 0 48px rgba(77, 128, 255, 0.12); }
+.tool-availability-overlay.is-subscription .tool-availability-icon { border-color: rgba(98, 145, 255, 0.42); color: #8db3ff; background: rgba(70, 113, 224, 0.12); }
+.tool-availability-overlay.is-subscription .tool-availability-kicker { color: #8db3ff; }
+.tool-availability-overlay.is-update .tool-availability-card { border-color: rgba(67, 214, 223, 0.36); }
+.tool-availability-overlay.is-update .tool-availability-kicker { color: #63dae1; }
+.tool-availability-overlay.is-update .tool-availability-action { border-color: rgba(67, 214, 223, 0.45); background: #63dae1; }
+
+.tool-maintenance-dot { display: inline-block; width: 7px; height: 7px; margin-left: auto; border-radius: 50%; background: #ffc04f; box-shadow: 0 0 0 4px rgba(255, 192, 79, 0.11); }
+.tool-maintenance-badge { display: inline-flex; border: 1px solid rgba(255, 192, 79, 0.3); border-radius: 999px; padding: 3px 8px; color: #ffc867; background: rgba(255, 192, 79, 0.08); font-size: 10px; font-weight: 800; }
+.tool-card.is-maintenance { opacity: 0.72; }
+.tool-card.is-maintenance .tool-card-btn { cursor: not-allowed; opacity: 0.45; }
+
+body[data-theme="soft-light"] .tool-availability-overlay { color: #152235; background: rgba(236, 242, 248, 0.88); }
+body[data-theme="soft-light"] .tool-availability-card { border-color: rgba(190, 124, 22, 0.32); background: rgba(255, 255, 255, 0.96); box-shadow: 0 24px 70px rgba(44, 57, 73, 0.2); }
+body[data-theme="soft-light"] .tool-availability-card h1 { color: #172033; }
+body[data-theme="soft-light"] .tool-availability-message { color: #526275; }
+
+@media (max-width: 700px) {
+    .tool-availability-overlay { padding: 44px 16px 18px; }
+    .tool-availability-card { padding: 32px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tool-availability-overlay, .tool-availability-card { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="discordBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080914" />
+      <stop offset="50%" stop-color="#0f1128" />
+      <stop offset="100%" stop-color="#06070f" />
+    </linearGradient>
+    <radialGradient id="discordGlow" cx="50%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#5865f2" stop-opacity="0.4" />
+      <stop offset="60%" stop-color="#5865f2" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#5865f2" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#discordBg)" />
+  <circle cx="400" cy="175" r="220" fill="url(#discordGlow)" />
+
+  <!-- Discord Clyde Game Controller Icon -->
+  <g transform="translate(400, 168) scale(1.15)">
+    <circle cx="0" cy="0" r="58" fill="#5865f2" />
+    <!-- Clyde Face Vector -->
+    <path d="M35 -18 C32 -26 25 -30 16 -32 C15 -30 13 -26 12 -24 C-2 -26 -14 -26 -28 -24 C-29 -26 -31 -30 -32 -32 C-41 -30 -48 -26 -51 -18 C-58 10 -56 36 -50 48 C-43 54 -32 54 -24 49 C-22 46 -20 42 -19 39 C-24 37 -28 34 -32 30 C-31 31 -30 32 -29 33 C-8 42 12 42 33 33 C34 32 35 31 36 30 C32 34 28 37 23 39 C24 42 26 46 28 49 C36 54 47 54 54 48 C60 36 62 10 35 -18 Z M-18 20 C-23 20 -27 15 -27 10 C-27 5 -23 0 -18 0 C-13 0 -9 5 -9 10 C-9 15 -13 20 -18 20 Z M18 20 C13 20 9 15 9 10 C9 5 13 0 18 0 C23 0 27 5 27 10 C27 15 23 20 18 20 Z" fill="#ffffff" transform="translate(8, -8)" />
+  </g>
+
+  <!-- Typography -->
+  <text x="400" y="325" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">Discord Nitro</text>
+  <text x="400" y="365" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="700" fill="#5865f2" text-anchor="middle" letter-spacing="3" text-transform="uppercase">500MB Uploads · 4K 60FPS · 2 Boosts</text>
+</svg>

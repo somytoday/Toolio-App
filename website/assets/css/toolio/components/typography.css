@@ -1,0 +1,80 @@
+/* ── Headers ───────────────────────────────────────── */
+
+.page-header { margin-bottom: 28px; }
+
+
+
+.page-title {
+
+    font-size: 26px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 6px;
+
+    background: linear-gradient(135deg, #ffffff 20%, #a1a1aa 100%);
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+body[data-theme="soft-light"] .page-title {
+    background: none;
+    -webkit-text-fill-color: var(--text-primary);
+    color: var(--text-primary);
+    text-shadow: none;
+}
+
+body[data-theme="soft-light"] .page-description,
+body[data-theme="soft-light"] .prompt-count,
+body[data-theme="soft-light"] .config-label,
+body[data-theme="soft-light"] label {
+    color: var(--text-secondary);
+}
+
+
+
+.page-description {
+
+    color: var(--text-secondary);
+
+    font-size: 13.5px;
+
+}
+
+
+
+/* ── Glass Cards ───────────────────────────────────── */
+
+.glass-card {
+
+    background: var(--bg-card);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius-lg);
+
+    padding: 22px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+}
+
+
+
+.glass-card:hover {
+
+    border-color: rgba(99, 102, 241, 0.15);
+
+}
+
+
+

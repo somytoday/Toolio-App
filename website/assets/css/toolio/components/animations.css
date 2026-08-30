@@ -1,0 +1,573 @@
+/* ── Page Transitions ──────────────────────────────── */
+
+.page {
+
+    animation: page-fade-in 0.25s ease;
+
+}
+
+
+
+@keyframes page-fade-in {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px);
+
+    }
+
+
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+
+/* ── Progress Action Buttons ──────────────────────── */
+
+.progress-actions {
+
+    display: inline-flex;
+
+    gap: 4px;
+
+    margin-left: 6px;
+
+}
+
+
+
+.prog-btn {
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 6px;
+
+    width: 26px;
+
+    height: 26px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: all var(--transition-fast);
+
+    padding: 0;
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.prog-btn:hover {
+
+    background: rgba(139, 92, 246, 0.2);
+
+    border-color: rgba(139, 92, 246, 0.4);
+
+    transform: scale(1.08);
+
+}
+
+
+
+/* ── Result Thumbnails ────────────────────────────── */
+
+.result-thumb {
+
+    width: auto;
+
+    height: auto;
+
+    max-width: 180px;
+
+    max-height: 110px;
+
+    border-radius: 6px;
+
+    object-fit: contain;
+
+    margin-right: 4px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    cursor: pointer;
+
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+
+}
+
+
+
+.result-thumb:hover {
+
+    transform: scale(1.12);
+
+    border-color: var(--accent-purple);
+
+}
+
+
+
+/* ── Ghost Button ────────────────────────────────── */
+
+.btn-ghost {
+
+    padding: 6px 14px;
+
+    border: 1px solid transparent;
+
+    background: transparent;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    border-radius: var(--radius-md);
+
+    cursor: pointer;
+
+    transition: all var(--transition-fast);
+
+    font-family: var(--font-main);
+
+}
+
+
+
+.btn-ghost:hover {
+
+    color: var(--text-primary);
+
+    border-color: var(--border-color);
+
+    background: rgba(255, 255, 255, 0.03);
+
+}
+
+
+
+/* ── Log Textarea ────────────────────────────────── */
+
+.log-textarea {
+
+    background: rgba(0, 0, 0, 0.4) !important;
+
+    color: var(--accent-green) !important;
+
+    border: 1px solid rgba(16, 185, 129, 0.1) !important;
+
+}
+
+
+
+/* ── Action Buttons (Table) ──────────────────────── */
+
+.action-btns {
+
+    display: flex;
+
+    gap: 4px;
+
+}
+
+
+
+.btn-action {
+
+    padding: 4px 10px;
+
+    border: none;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    font-family: var(--font-main);
+
+    cursor: pointer;
+
+    transition: all var(--transition-fast);
+
+    white-space: nowrap;
+
+}
+
+
+
+.btn-action-green {
+
+    background: #047857;
+
+    color: white;
+
+}
+
+
+
+.btn-action-green:hover {
+
+    background: #065f46;
+
+}
+
+
+
+.btn-action-orange {
+
+    background: var(--accent-orange);
+
+    color: white;
+
+}
+
+
+
+.btn-action-orange:hover {
+
+    background: #d97706;
+
+}
+
+
+
+.btn-action-red {
+
+    background: rgba(239, 68, 68, 0.15);
+
+    color: var(--accent-red);
+
+}
+
+
+
+.btn-action-red:hover {
+
+    background: rgba(239, 68, 68, 0.3);
+
+}
+
+
+
+.btn-action-blue {
+
+    background: #2563eb;
+
+    color: white;
+
+}
+
+
+
+.btn-action-blue:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+
+/* ── Warning Banner ──────────────────────────────── */
+
+.warning-banner {
+
+    background: rgba(245, 158, 11, 0.08);
+
+    border: 1px solid rgba(245, 158, 11, 0.2);
+
+}
+
+
+
+/* ── App-Wide Button Motion ───────────────────────── */
+
+.btn-primary,
+
+.btn-secondary,
+
+.btn-danger,
+
+.btn-accent,
+
+.btn-start,
+
+.btn-pause,
+
+.btn-stop,
+
+.btn-ghost,
+
+.toolbar-btn,
+
+.tool-ctrl-btn,
+
+.settings-gear-btn,
+
+.sidebar-theme-switch,
+
+.social-btn,
+
+.btn-icon-mini,
+
+.popover-btn,
+
+.prog-btn,
+
+.btn-session-load,
+
+.btn-session-cancel,
+
+.settings-tab,
+
+.lang-btn,
+
+.plan-btn,
+
+.btn-action,
+
+.btn-queue-edit,
+
+.btn-queue-delete,
+
+.modal-dialog button:not(.modal-close-btn) {
+
+    transition:
+
+        transform 150ms ease,
+
+        box-shadow 150ms ease,
+
+        background-color 150ms ease,
+
+        border-color 150ms ease,
+
+        color 150ms ease,
+
+        opacity 150ms ease !important;
+
+}
+
+
+
+.btn-primary:not(:disabled):hover,
+
+.btn-secondary:not(:disabled):hover,
+
+.btn-danger:not(:disabled):hover,
+
+.btn-accent:not(:disabled):hover,
+
+.btn-start:not(:disabled):hover,
+
+.btn-pause:not(:disabled):hover,
+
+.btn-stop:not(:disabled):hover,
+
+.btn-ghost:not(:disabled):hover,
+
+.toolbar-btn:not(:disabled):hover,
+
+.tool-ctrl-btn:not(:disabled):hover,
+
+.settings-gear-btn:not(:disabled):hover,
+
+.sidebar-theme-switch:not(:disabled):hover,
+
+.social-btn:not(:disabled):hover,
+
+.btn-icon-mini:not(:disabled):hover,
+
+.popover-btn:not(:disabled):hover,
+
+.prog-btn:not(:disabled):hover,
+
+.btn-session-load:not(:disabled):hover,
+
+.btn-session-cancel:not(:disabled):hover,
+
+.settings-tab:not(:disabled):hover,
+
+.lang-btn:not(:disabled):hover,
+
+.plan-btn:not(:disabled):hover,
+
+.btn-action:not(:disabled):hover,
+
+.btn-queue-edit:not(:disabled):hover,
+
+.btn-queue-delete:not(:disabled):hover,
+
+.modal-dialog button:not(.modal-close-btn):not(:disabled):hover {
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+
+}
+
+
+
+.btn-primary:not(:disabled):active,
+
+.btn-secondary:not(:disabled):active,
+
+.btn-danger:not(:disabled):active,
+
+.btn-accent:not(:disabled):active,
+
+.btn-start:not(:disabled):active,
+
+.btn-pause:not(:disabled):active,
+
+.btn-stop:not(:disabled):active,
+
+.btn-ghost:not(:disabled):active,
+
+.toolbar-btn:not(:disabled):active,
+
+.tool-ctrl-btn:not(:disabled):active,
+
+.settings-gear-btn:not(:disabled):active,
+
+.sidebar-theme-switch:not(:disabled):active,
+
+.social-btn:not(:disabled):active,
+
+.btn-icon-mini:not(:disabled):active,
+
+.popover-btn:not(:disabled):active,
+
+.prog-btn:not(:disabled):active,
+
+.btn-session-load:not(:disabled):active,
+
+.btn-session-cancel:not(:disabled):active,
+
+.settings-tab:not(:disabled):active,
+
+.lang-btn:not(:disabled):active,
+
+.plan-btn:not(:disabled):active,
+
+.btn-action:not(:disabled):active,
+
+.btn-queue-edit:not(:disabled):active,
+
+.btn-queue-delete:not(:disabled):active,
+
+.modal-dialog button:not(.modal-close-btn):not(:disabled):active {
+
+    transform: translateY(0) scale(0.97);
+
+    box-shadow: none;
+
+}
+
+
+
+.btn-primary:disabled,
+
+.btn-secondary:disabled,
+
+.btn-danger:disabled,
+
+.btn-accent:disabled,
+
+.btn-start:disabled,
+
+.btn-pause:disabled,
+
+.btn-stop:disabled,
+
+.btn-ghost:disabled,
+
+.toolbar-btn:disabled,
+
+.tool-ctrl-btn:disabled,
+
+.settings-tab:disabled,
+
+.lang-btn:disabled,
+
+.plan-btn:disabled,
+
+.btn-action:disabled,
+
+.modal-dialog button:disabled {
+
+    transform: none !important;
+
+    box-shadow: none !important;
+
+}
+
+
+
+.modal-close-btn {
+
+    transition:
+
+        background-color 150ms ease,
+
+        border-color 150ms ease,
+
+        color 150ms ease,
+
+        opacity 150ms ease !important;
+
+}
+
+
+
+.msc-open-file {
+
+    transition: color 150ms ease, text-decoration-color 150ms ease;
+
+}
+
+
+
+.msc-open-file:hover {
+
+    color: var(--accent-blue) !important;
+
+    text-decoration: underline;
+
+    text-decoration-color: rgba(59, 130, 246, 0.55);
+
+}
+
+
+
+@keyframes pulse-amber {
+
+    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.2)); }
+
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.5)); }
+
+    100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.2)); }
+
+}

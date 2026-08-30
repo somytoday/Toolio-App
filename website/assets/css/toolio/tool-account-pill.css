@@ -1,0 +1,65 @@
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 82px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #365579;
+    border-radius: 9px;
+    color: #c8d7e9;
+    background: #102136;
+    font: inherit;
+    font-size: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color .16s ease, background-color .16s ease, color .16s ease;
+}
+
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill:hover {
+    border-color: #52749a;
+    background: #142940;
+}
+
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill:focus-visible {
+    outline: 2px solid #74a9e8;
+    outline-offset: 2px;
+}
+
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill i {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+}
+
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill.has-none {
+    color: #ffb0bc;
+    border-color: rgba(251, 113, 133, .42);
+    background: rgba(64, 18, 30, .5);
+}
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill.has-none i {
+    background: #fb7185;
+    box-shadow: 0 0 9px rgba(251, 113, 133, .62);
+}
+
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill.has-one {
+    color: #ffda91;
+    border-color: rgba(240, 185, 79, .42);
+    background: rgba(58, 39, 10, .5);
+}
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill.has-one i {
+    background: #f0b94f;
+    box-shadow: 0 0 9px rgba(240, 185, 79, .58);
+}
+
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill.has-many {
+    color: #8ce6c4;
+    border-color: rgba(50, 212, 154, .4);
+    background: rgba(11, 57, 44, .46);
+}
+:is(#page-flow-image-v2.fi-v2, #page-flow-video.fv, #page-gemini-tts.fi-v2) .tool-account-pill.has-many i {
+    background: #32d49a;
+    box-shadow: 0 0 9px rgba(50, 212, 154, .65);
+}

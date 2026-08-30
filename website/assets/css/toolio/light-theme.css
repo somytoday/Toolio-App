@@ -1,0 +1,1272 @@
+﻿/*
+ * light-theme.css
+ * Light theme overrides and premium UI component fixes.
+ * Originally inline in index.html — extracted for maintainability.
+ *
+ * Covers:
+ *   - CapCut Automator (CCA) light theme fixes
+ *   - Premium account page styles
+ *   - Sidebar account card overhaul
+ *   - Premium settings tab styles
+ *   - General component overrides for soft-light theme
+ */
+        /* Fix Backgrounds and Text colors */
+        body[data-theme="soft-light"] .config-input,
+        body[data-theme="soft-light"] .config-select,
+        body[data-theme="soft-light"] .config-textarea,
+        body[data-theme="soft-light"] #ss-shift-preview,
+        body[data-theme="soft-light"] .modal-dialog,
+        body[data-theme="soft-light"] .app-guard-card,
+        body[data-theme="soft-light"] .toast,
+        body[data-theme="soft-light"] .cca-modal,
+        body[data-theme="soft-light"] .cca-modal-content,
+        body[data-theme="soft-light"] .trial-celebration-content,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-card,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-rp-card,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-rp-prep-card,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-prep-flow-card,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-step-card,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-footer,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-stat-card,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-table,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-table th,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-table td,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-sticky-footer,
+        body[data-theme="soft-light"] .cca-format-dialog,
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-dialog {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] .settings-dialog {
+            background:
+                radial-gradient(circle at 14% 10%, rgba(255, 206, 177, 0.48), transparent 34%),
+                radial-gradient(circle at 88% 16%, rgba(221, 196, 238, 0.62), transparent 36%),
+                linear-gradient(135deg, #f3d5c4 0%, #ddd1ef 48%, #cfc8f2 100%) !important;
+            border-color: rgba(95, 82, 98, 0.14) !important;
+        }
+
+        /* Fix text colors inside the preview table, stat cards, and dialogs */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-table *,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-stat-card *,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-sticky-footer *,
+        body[data-theme="soft-light"] .cca-format-dialog *,
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-dialog * {
+            color: #0f172a !important;
+        }
+
+        /* Fix inputs and textarea inside the format dialogs */
+        body[data-theme="soft-light"] .cca-format-dialog input,
+        body[data-theme="soft-light"] .cca-format-dialog textarea,
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-dialog input,
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-dialog textarea {
+            background-color: #f1f5f9 !important;
+            background: #f1f5f9 !important;
+            border: 1px solid rgba(0,0,0,0.2) !important;
+            color: #0f172a !important;
+        }
+
+        /* Fix texts inside the capcut cards */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-prep-flow-card *,
+        body[data-theme="soft-light"] .trial-celebration-content h1,
+        body[data-theme="soft-light"] .trial-celebration-content p {
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        /* Make Celebration Popup Bigger */
+        .trial-celebration-content {
+            transform: scale(1.15) !important;
+            padding: 40px !important;
+        }
+        .trial-celebration-content h1 {
+            font-size: 28px !important;
+        }
+        .trial-celebration-content p {
+            font-size: 16px !important;
+        }
+
+        /* Protect certain colored texts inside capcut */
+        body[data-theme="soft-light"] #app #page-capcut-automator .text-green-500,
+        body[data-theme="soft-light"] #app #page-capcut-automator .text-blue-500,
+        body[data-theme="soft-light"] #app #page-capcut-automator .text-purple-500 {
+            filter: brightness(0.6) !important;
+        }
+
+        /* Destroy Gradient Text */
+        body[data-theme="soft-light"] .brand-name,
+        body[data-theme="soft-light"] .cca-topbar-brand {
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            -webkit-text-fill-color: #0f172a !important;
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+        /* Make success and warning buttons solid in light theme */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-success,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-success,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-success {
+            background-color: #10b981 !important;
+            background: #10b981 !important;
+            color: #ffffff !important;
+            border-color: #059669 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-success *,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-success *,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-success * {
+            color: #ffffff !important;
+        }
+
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-warning,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-warning,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-warning {
+            background-color: #f59e0b !important;
+            background: #f59e0b !important;
+            color: #ffffff !important;
+            border-color: #d97706 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-warning *,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-warning *,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-warning * {
+            color: #ffffff !important;
+        }
+
+        /* Solid styling for secondary buttons in light theme */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-secondary,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-secondary,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-secondary {
+            background-color: #e2e8f0 !important;
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-secondary *,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-secondary *,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-secondary * {
+            color: #0f172a !important;
+        }
+
+        /* Overrides for page 3 field labels and slider track */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-field-label {
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator #cca-step-2 .cca-slider-row {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-slider-min,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-slider-max,
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-dur-unit {
+            color: #334155 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-slider {
+            background-color: #cbd5e1 !important;
+            background: #cbd5e1 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-slider-val {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.2) !important;
+            color: #0f172a !important;
+        }
+
+        /* Overrides for Advanced Matching button */
+        body[data-theme="soft-light"] #app #page-capcut-automator #cca-btn-advanced {
+            background-color: #8b5cf6 !important;
+            background: #8b5cf6 !important;
+            color: #ffffff !important;
+            border-color: #7c3aed !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator #cca-btn-advanced * {
+            color: #ffffff !important;
+        }
+
+        /* Format inputs in popups */
+        body[data-theme="soft-light"] .cca-dlg-input {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1px solid rgba(0,0,0,0.25) !important;
+            color: #0f172a !important;
+        }
+
+        /* Solid styling for dialog success and secondary buttons with higher specificity */
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-success {
+            background-color: #10b981 !important;
+            background: #10b981 !important;
+            color: #ffffff !important;
+            border-color: #059669 !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-success * {
+            color: #ffffff !important;
+        }
+
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-secondary {
+            background-color: #e2e8f0 !important;
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-secondary * {
+            color: #0f172a !important;
+        }
+
+        /* Filename Formats and Warning button styling */
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-warning,
+        body[data-theme="soft-light"] #cca-dlg-advanced-matching #cca-btn-fmt-filename,
+        body[data-theme="soft-light"] #app #page-capcut-automator #cca-dlg-advanced-matching #cca-btn-fmt-filename {
+            background-color: #f59e0b !important;
+            background: #f59e0b !important;
+            color: #ffffff !important;
+            border: 1.5px solid #d97706 !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-warning *,
+        body[data-theme="soft-light"] #cca-dlg-advanced-matching #cca-btn-fmt-filename *,
+        body[data-theme="soft-light"] #app #page-capcut-automator #cca-dlg-advanced-matching #cca-btn-fmt-filename * {
+            color: #ffffff !important;
+        }
+
+        /* Support slider tracks inside modals */
+        body[data-theme="soft-light"] .modal-overlay .cca-slider {
+            background-color: #cbd5e1 !important;
+            background: #cbd5e1 !important;
+        }
+
+        /* Professional Premium Loading Animation for CapCut Automator */
+        body[data-theme="soft-light"] .cca-processing-overlay {
+            background: rgba(255, 255, 255, 0.45) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+        }
+
+        body[data-theme="soft-light"] .cca-processing-card {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 1px solid rgba(0,0,0,0.08) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+            padding: 30px 45px !important;
+            border-radius: 20px !important;
+            animation: ccaPopUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        /* Beautiful rotating gears loader instead of moving dot spinner */
+        .cca-loading-gears {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 12px;
+        }
+        .cca-gear {
+            position: absolute;
+            transform-origin: 50% 50%;
+        }
+        .cca-gear-large {
+            width: 54px;
+            height: 54px;
+            top: 5px;
+            left: 5px;
+            animation: ccaSpinClockwise 3.5s linear infinite;
+        }
+        .cca-gear-small {
+            width: 36px;
+            height: 36px;
+            bottom: 6px;
+            right: 6px;
+            animation: ccaSpinCounterClockwise 2.2s linear infinite;
+        }
+
+        body[data-theme="soft-light"] .cca-processing-text {
+            color: #0f172a !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.5px !important;
+            animation: ccaTextPulse 1.5s ease-in-out infinite !important;
+        }
+
+        /* Sync Wizard capsule and label styling */
+        body[data-theme="soft-light"] .cca-topbar-wizard {
+            background-color: #e2e8f0 !important;
+            background: #e2e8f0 !important;
+            border: 1.5px solid #94a3b8 !important;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+        body[data-theme="soft-light"] .cca-topbar-wizard-label {
+            color: #1e293b !important;
+            font-weight: 800 !important;
+        }
+
+        /* Darken Select Your CapCut Project title */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-step-subsection {
+            color: #0f172a !important;
+            font-weight: 800 !important;
+        }
+
+        /* Border and style fixes for project selector row */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-select {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1.5px solid #94a3b8 !important;
+            color: #0f172a !important;
+            font-weight: 600 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+
+        /* Solid styling for secondary buttons in light theme */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-secondary,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-secondary,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-secondary {
+            background-color: #e2e8f0 !important;
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+            border: 1.5px solid #94a3b8 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-secondary *,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-secondary *,
+        body[data-theme="soft-light"] .cca-format-dialog .cca-btn-secondary * {
+            color: #0f172a !important;
+        }
+
+        /* Solid teal button styling */
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-teal,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-teal {
+            background-color: #0d9488 !important;
+            background: #0d9488 !important;
+            color: #ffffff !important;
+            border: 1.5px solid #0f766e !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] #app #page-capcut-automator .cca-btn-teal *,
+        body[data-theme="soft-light"] .modal-overlay .cca-btn-teal * {
+            color: #ffffff !important;
+        }
+
+        /* Premium Indigo-Purple gradient for main Action Buttons */
+        body[data-theme="soft-light"] #page-capcut-automator .cca-btn-prepare,
+        body[data-theme="soft-light"] #page-capcut-automator .cca-btn-preview,
+        body[data-theme="soft-light"] #page-capcut-automator .cca-btn-apply {
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            border: 1.5px solid #4f46e5 !important;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2) !important;
+            font-weight: 700 !important;
+        }
+
+        /* Fix Advanced Matching / Format Modal left panel */
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-left-panel {
+            background-color: #f1f5f9 !important;
+            background: #f1f5f9 !important;
+            border-right: 1px solid #cbd5e1 !important;
+            border-radius: 12px 0 0 12px !important;
+        }
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-main-title {
+            color: #0f172a !important;
+            font-weight: 800 !important;
+        }
+        body[data-theme="soft-light"] #cca-dlg-scene-format .cca-format-list li {
+            color: #334155 !important;
+            font-weight: 700 !important;
+        }
+
+        /* Input styling in modals */
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-dlg-input {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1.5px solid #94a3b8 !important;
+            color: #0f172a !important;
+            padding: 8px 12px !important;
+            border-radius: 6px !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-dlg-input::placeholder {
+            color: #64748b !important;
+        }
+
+        /* Primary and Success buttons in Modals */
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-primary {
+            background-color: #6366f1 !important;
+            background: #6366f1 !important;
+            color: #ffffff !important;
+            border: 1.5px solid #4f46e5 !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-primary * {
+            color: #ffffff !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-success {
+            background-color: #10b981 !important;
+            background: #10b981 !important;
+            color: #ffffff !important;
+            border: 1.5px solid #059669 !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] .modal-overlay[id^="cca-dlg-"] .cca-btn-success * {
+            color: #ffffff !important;
+        }
+
+        @keyframes ccaPopUp {
+            0% { transform: translateY(15px) scale(0.95); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        @keyframes ccaSpinClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes ccaSpinCounterClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+
+        @keyframes ccaTextPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Style help popup feature cards for light theme */
+        body[data-theme="soft-light"] .cca-feature-card {
+            background-color: #f8fafc !important;
+            background: #f8fafc !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+        }
+        body[data-theme="soft-light"] .cca-feature-card strong {
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] .cca-feature-card div {
+            color: #334155 !important;
+        }
+
+        /* Fix preview search row squeezing */
+        #page-capcut-automator #cca-step-3 .cca-search-field {
+            flex-shrink: 0 !important;
+            width: 90px !important;
+            min-width: 90px !important;
+            padding: 4px 6px !important;
+        }
+        #page-capcut-automator #cca-step-3 #cca-preview-search {
+            flex: 0 1 120px !important;
+            min-width: 80px !important;
+            padding: 4px 8px !important;
+        }
+
+        /* Explicitly protect G-Labs Crack */
+        body[data-theme="soft-light"] .crack-input {
+            background-color: transparent !important;
+            background: transparent !important;
+            border: 1px solid rgba(16, 185, 129, 0.3) !important;
+            color: #10b981 !important;
+        }
+
+        /* Override highly specific button rules in Custom Mapping Format Modal */
+        body[data-theme="soft-light"] #app #cca-dlg-scene-format #cca-btn-auto-detect-scene {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            border: 1.5px solid #4f46e5 !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-scene-format #cca-btn-auto-detect-scene * {
+            color: #ffffff !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-scene-format #cca-btn-save-scene-fmt {
+            background-color: #10b981 !important;
+            background: #10b981 !important;
+            border: 1.5px solid #059669 !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-scene-format #cca-btn-save-scene-fmt * {
+            color: #ffffff !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-scene-format #cca-btn-clear-scene-fmt {
+            background-color: #e2e8f0 !important;
+            background: #e2e8f0 !important;
+            color: #0f172a !important;
+            border: 1.5px solid #94a3b8 !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-scene-format #cca-btn-clear-scene-fmt * {
+            color: #0f172a !important;
+        }
+
+        /* Fix Extra media not in markers row in Advanced Matching Modal */
+        body[data-theme="soft-light"] #app #cca-dlg-advanced-matching .cca-extra-media-row label {
+            color: #0f172a !important;
+            font-weight: 800 !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-advanced-matching .cca-extra-media-row .cca-select {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1.5px solid #94a3b8 !important;
+            color: #0f172a !important;
+            font-weight: 600 !important;
+        }
+        body[data-theme="soft-light"] #app #cca-dlg-advanced-matching .cca-extra-media-row .cca-select option {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+        }
+
+        /* STEP 5 DONE PAGE FIXES */
+        body[data-theme="soft-light"] #page-capcut-automator .cca-done-hero {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9) !important;
+            border: 1.5px solid #cbd5e1 !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04) !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-done-title {
+            color: #0f172a !important;
+            font-weight: 800 !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-done-subtitle {
+            color: #475569 !important;
+            font-weight: 600 !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-done-stat {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-done-stat-label {
+            color: #475569 !important;
+            font-weight: 700 !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-done-stat-value {
+            font-weight: 800 !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-action-card {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-action-body strong {
+            color: #0f172a !important;
+            font-weight: 800 !important;
+        }
+        body[data-theme="soft-light"] #page-capcut-automator .cca-action-body span {
+            color: #475569 !important;
+            font-weight: 600 !important;
+        }
+
+        /* SYNC LOG MODAL INLINE STYLE OVERRIDES */
+        body[data-theme="soft-light"] #cca-dlg-sync-log .cca-dlg-title {
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] #cca-dlg-sync-log pre.cca-sync-log-text {
+            background: #f8fafc !important;
+            color: #1e293b !important;
+            border: 1.5px solid #cbd5e1 !important;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.02) !important;
+            font-weight: 600 !important;
+        }
+
+        /* PREMIUM ACCOUNT PAGE OVERHAUL (Light & Dark Compatible) */
+        .premium-tabs {
+            background: rgba(148, 163, 184, 0.1) !important;
+            border-radius: 12px !important;
+            padding: 6px !important;
+            border: none !important;
+            gap: 4px !important;
+        }
+        .premium-tabs .settings-tab {
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            padding: 8px 14px !important;
+            border: none !important;
+            background: transparent !important;
+            color: var(--text-secondary) !important;
+            transition: all 0.2s ease !important;
+        }
+        .premium-tabs .settings-tab.active {
+            background: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+        .premium-badge {
+            background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3) !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.5px !important;
+            border: none !important;
+        }
+        .premium-card {
+            border: 1.5px solid rgba(148, 163, 184, 0.2) !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04) !important;
+            border-radius: 16px !important;
+        }
+        body[data-theme="soft-light"] .premium-card {
+            background: #ffffff !important;
+        }
+        .premium-avatar {
+            padding: 2px !important;
+        }
+        .premium-name {
+            font-weight: 800 !important;
+            font-size: 1.25rem !important;
+            letter-spacing: -0.5px !important;
+        }
+        .premium-stat-card {
+            background: var(--bg-secondary) !important;
+            border: 1.5px solid rgba(148, 163, 184, 0.15) !important;
+            border-radius: 12px !important;
+            padding: 12px 16px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02) !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+        .premium-stat-card:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05) !important;
+        }
+        body[data-theme="soft-light"] .premium-stat-card {
+            background: #f8fafc !important;
+        }
+        .premium-stat-val {
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            color: var(--text-primary) !important;
+            margin-top: 4px !important;
+            display: block !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+        }
+        .premium-btn-indigo {
+            background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+            border: 1px solid #4338ca !important;
+            color: white !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
+        }
+        .premium-btn-indigo:hover {
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4) !important;
+            transform: translateY(-1px) !important;
+        }
+        .premium-btn-red {
+            background: rgba(239, 68, 68, 0.1) !important;
+            border: 1px solid rgba(239, 68, 68, 0.3) !important;
+            color: #ef4444 !important;
+            font-weight: 700 !important;
+        }
+        .premium-btn-red:hover {
+            background: #ef4444 !important;
+            color: white !important;
+        }
+        .premium-btn-gray {
+            background: var(--bg-secondary) !important;
+            border: 1px solid var(--border-color) !important;
+            font-weight: 600 !important;
+        }
+        .premium-btn-gray:hover {
+            background: rgba(148, 163, 184, 0.2) !important;
+        }
+        .premium-redeem-box {
+            background: var(--bg-secondary) !important;
+            border: 1.5px dashed rgba(99, 102, 241, 0.4) !important;
+            border-radius: 12px !important;
+            padding: 16px !important;
+            margin-top: 20px !important;
+        }
+        body[data-theme="soft-light"] .premium-redeem-box {
+            background: #f8fafc !important;
+        }
+        .premium-input {
+            border-radius: 8px !important;
+            border: 1.5px solid var(--border-color) !important;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02) !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            padding: 10px 14px !important;
+        }
+        .premium-price {
+            font-size: 2.5rem !important;
+            font-weight: 900 !important;
+            background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            letter-spacing: -1px !important;
+        }
+        .premium-warning-box {
+            background: rgba(245, 158, 11, 0.1) !important;
+            border: 1px dashed rgba(245, 158, 11, 0.5) !important;
+            color: #d97706 !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+        }
+        body[data-theme="soft-light"] .premium-warning-box {
+            background: #fffbeb !important;
+        }
+        .premium-contact-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 12px !important;
+        }
+        .premium-btn-whatsapp {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            border: 1px solid #047857 !important;
+            color: white !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25) !important;
+        }
+        .premium-btn-whatsapp:hover {
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4) !important;
+        }
+        .premium-btn-telegram {
+            background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+            border: 1px solid #1d4ed8 !important;
+            color: white !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25) !important;
+        }
+        .premium-btn-telegram:hover {
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4) !important;
+        }
+
+        /* PREMIUM ACCOUNT SIZING OVERRIDES */
+        #tab-account .btn-primary {
+            padding: 8px !important;
+            font-size: 14px !important;
+        }
+        #tab-account .section-badge {
+            font-size: 11px !important;
+        }
+        #btn-account-logout {
+            font-size: 14px !important;
+        }
+        #btn-account-refresh {
+            font-size: 14px !important;
+        }
+        #tab-account .method-note {
+            font-size: 12.5px !important;
+        }
+        #account-redeem-code {
+            font-size: 15px !important;
+            padding: 12px !important;
+        }
+
+        /* SIDEBAR ACCOUNT CARD OVERHAUL */
+        .settings-dialog {
+            max-width: 1350px !important;
+        }
+        .sidebar-account-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.6));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 12px 10px;
+            transition: all 0.3s ease;
+        }
+        .sidebar-account-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+        body[data-theme="soft-light"] .sidebar-account-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(241, 245, 249, 0.9)) !important;
+            border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        }
+        /* LIGHT THEME OVERRIDES */
+        body[data-theme="soft-light"] #optional-update-panel {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel h3 {
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel p#optional-update-message {
+            color: #475569 !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel p:not(#optional-update-message) {
+            color: #b45309 !important; /* Darker amber for readability on white */
+        }
+        body[data-theme="soft-light"] #optional-update-panel.prepared-update-mode #optional-update-detail {
+            color: #166534 !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel.prepared-update-mode.update-waiting-mode #optional-update-detail,
+        body[data-theme="soft-light"] #optional-update-panel.prepared-update-mode.update-countdown-mode #optional-update-detail {
+            color: #92400e !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel .optional-update-close {
+            color: #64748b;
+        }
+        body[data-theme="soft-light"] #optional-update-panel .optional-update-close:hover,
+        body[data-theme="soft-light"] #optional-update-panel .optional-update-close:focus-visible {
+            color: #0f172a;
+            background: rgba(15, 23, 42, 0.07);
+        }
+        body[data-theme="soft-light"] #optional-update-panel.updated-mode {
+            border-color: rgba(5, 150, 105, 0.28) !important;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12) !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel.updated-mode .optional-update-icon {
+            color: #047857;
+            background: rgba(5, 150, 105, 0.12);
+        }
+        body[data-theme="soft-light"] #optional-update-panel.updated-mode #optional-update-detail {
+            color: #166534 !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel.updated-mode.notes-open #optional-update-detail {
+            color: #475569 !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel .optional-update-actions .btn-secondary,
+        body[data-theme="soft-light"] #optional-update-panel #btn-optional-update-view-work {
+            color: #334155 !important;
+            background: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+        body[data-theme="soft-light"] #optional-update-panel .optional-update-actions .btn-secondary:hover,
+        body[data-theme="soft-light"] #optional-update-panel .optional-update-actions .btn-secondary:focus-visible,
+        body[data-theme="soft-light"] #optional-update-panel #btn-optional-update-view-work:hover,
+        body[data-theme="soft-light"] #optional-update-panel #btn-optional-update-view-work:focus-visible {
+            color: #0f172a !important;
+            background: #e2e8f0 !important;
+        }
+        body[data-theme="soft-light"] .premium-tabs {
+            background: rgba(226, 232, 240, 0.9) !important; /* Darker container to make white pop */
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+        body[data-theme="soft-light"] .premium-tabs .settings-tab.active {
+            background: white !important;
+            color: #4f46e5 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border: 1px solid rgba(0,0,0,0.05) !important;
+        }
+        body[data-theme="soft-light"] .premium-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(0, 0, 0, 0.12) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+        }
+        body[data-theme="soft-light"] .premium-stat-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+        }
+        body[data-theme="soft-light"] .app-guard-google-login {
+            background: #ffffff !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+            color: #0f172a !important;
+        }
+        body[data-theme="soft-light"] .app-guard-google-login:hover {
+            background: #f8fafc !important;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12) !important;
+        }
+        body[data-theme="soft-light"] .app-guard-overlay {
+            background: 
+                radial-gradient(circle at 22% 20%, rgba(99, 102, 241, 0.15), transparent 26rem),
+                radial-gradient(circle at 80% 24%, rgba(168, 85, 247, 0.15), transparent 24rem),
+                rgba(241, 245, 249, 0.85) !important;
+            backdrop-filter: blur(24px) !important;
+        }
+        .sidebar-account-avatar {
+            width: 52px !important;
+            height: 52px !important;
+            padding: 2px !important;
+            transition: transform 0.3s ease !important;
+        }
+        .sidebar-account-card:hover .sidebar-account-avatar {
+            transform: scale(1.05) !important;
+        }
+        .sidebar-account-name {
+            font-weight: 600 !important;
+            letter-spacing: -0.3px !important;
+            margin-top: 6px !important;
+        }
+        .sidebar-account-plan {
+            color: white !important;
+            border: none !important;
+            font-weight: 700 !important;
+            padding: 3px 9px !important;
+            border-radius: 6px !important;
+            font-size: 13.5px !important;
+            letter-spacing: 0.5px !important;
+            display: inline-block !important;
+            margin-top: 4px !important;
+        }
+        .sidebar-account-time {
+            font-weight: 600 !important;
+            color: var(--text-primary) !important;
+            font-size: 12px !important;
+            letter-spacing: -0.2px !important;
+            margin-top: 7px !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            font-variant-numeric: tabular-nums !important;
+        }
+
+        /* PREMIUM GENERAL TAB OVERHAUL */
+        .premium-lang-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+            gap: 12px !important;
+            margin-top: 10px !important;
+        }
+        .premium-lang-btn {
+            background: rgba(30, 41, 59, 0.5) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05) !important;
+            color: var(--text-secondary) !important;
+            padding: 10px 14px !important;
+            border-radius: 10px !important;
+            font-size: 13.5px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+        }
+        body[data-theme="soft-light"] .premium-lang-btn {
+            background: rgba(255, 255, 255, 0.6) !important;
+            border-color: rgba(0, 0, 0, 0.05) !important;
+        }
+        .premium-lang-btn:hover {
+            background: rgba(99, 102, 241, 0.1) !important;
+            color: #818cf8 !important;
+            transform: translateY(-2px) !important;
+        }
+        .premium-lang-btn.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)) !important;
+            border: 1px solid #818cf8 !important;
+            color: white !important;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25) !important;
+        }
+        body[data-theme="soft-light"] .premium-lang-btn.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)) !important;
+            color: #4f46e5 !important;
+            border-color: #6366f1 !important;
+        }
+        .premium-theme-toggle {
+            margin-top: 12px !important;
+            padding: 10px 18px !important;
+            border-radius: 30px !important;
+            background: rgba(30, 41, 59, 0.6) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            font-size: 14.5px !important;
+            font-weight: 700 !important;
+            transition: all 0.3s ease !important;
+            width: fit-content !important;
+        }
+        body[data-theme="soft-light"] .premium-theme-toggle {
+            background: rgba(255, 255, 255, 0.8) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            color: #0f172a !important;
+        }
+        .premium-theme-toggle:hover {
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+            border-color: #6366f1 !important;
+            color: #818cf8 !important;
+            cursor: pointer !important;
+        }
+        body[data-theme="soft-light"] .premium-theme-toggle:hover {
+            color: #4f46e5 !important;
+        }
+        .premium-save-btn {
+            background: linear-gradient(135deg, #10b981, #059669) !important;
+            width: 100% !important;
+            margin-top: 16px !important;
+            padding: 12px !important;
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            border-radius: 12px !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3) !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+            color: white !important;
+        }
+        .premium-save-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 28px rgba(16, 185, 129, 0.4) !important;
+        }
+
+/* ── Soft-light clarity system ─────────────────────────────────────────────
+   Tonal backgrounds separate regions; white surfaces keep dense tools easy
+   to scan. Interactive controls always use a stronger border or solid fill. */
+body[data-theme="soft-light"] {
+    --light-canvas: #f3f0fa;
+    --light-canvas-warm: #fbf3ee;
+    --light-surface: #ffffff;
+    --light-surface-muted: #f4f2fa;
+    --light-surface-blue: #eef2ff;
+    --light-ink: #182033;
+    --light-ink-muted: #5c6578;
+    --light-line: #c9c7d8;
+    --light-line-strong: #9da4ba;
+    --light-primary: #5146d9;
+    --light-primary-hover: #4338ca;
+    --light-focus: rgba(79, 70, 229, 0.24);
+}
+
+body[data-theme="soft-light"] .page:not(#page-flow-video):not(#page-flow-image-v2):not(#page-gemini-tts) {
+    color: var(--light-ink);
+}
+
+body[data-theme="soft-light"] :is(.config-card, .glass-card, .premium-card) {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-color: var(--light-line) !important;
+    box-shadow: 0 8px 24px rgba(51, 43, 79, 0.08) !important;
+}
+
+body[data-theme="soft-light"] :is(.config-input, .config-select, .config-textarea, .form-input, .premium-input) {
+    color: var(--light-ink) !important;
+    background: var(--light-surface) !important;
+    border-color: var(--light-line-strong) !important;
+}
+
+body[data-theme="soft-light"] :is(.config-input, .config-select, .config-textarea, .form-input, .premium-input):focus {
+    border-color: var(--light-primary) !important;
+    box-shadow: 0 0 0 3px var(--light-focus) !important;
+}
+
+body[data-theme="soft-light"] :is(.btn-primary, .btn-accent, .btn-start, .premium-btn-indigo):not(:disabled) {
+    color: #ffffff !important;
+    border: 1px solid #3730a3 !important;
+    background: linear-gradient(135deg, #635bdf, var(--light-primary)) !important;
+    box-shadow: 0 7px 16px rgba(79, 70, 229, 0.24) !important;
+}
+
+body[data-theme="soft-light"] :is(.btn-primary, .btn-accent, .btn-start, .premium-btn-indigo):hover:not(:disabled) {
+    background: linear-gradient(135deg, #554bd8, var(--light-primary-hover)) !important;
+    box-shadow: 0 9px 20px rgba(67, 56, 202, 0.3) !important;
+}
+
+body[data-theme="soft-light"] :is(.btn-secondary, .btn-ghost, .tool-card-btn, .premium-btn-gray):not(:disabled) {
+    color: #273149 !important;
+    background: #ffffff !important;
+    border-color: var(--light-line-strong) !important;
+    box-shadow: 0 2px 5px rgba(36, 31, 55, 0.07) !important;
+}
+
+body[data-theme="soft-light"] :is(.btn-secondary, .btn-ghost, .tool-card-btn, .premium-btn-gray):hover:not(:disabled) {
+    color: #312e81 !important;
+    background: var(--light-surface-blue) !important;
+    border-color: #7169d9 !important;
+}
+
+body[data-theme="soft-light"] button:disabled {
+    color: #7b8292 !important;
+    background: #e5e7ed !important;
+    border-color: #c9ccd5 !important;
+    box-shadow: none !important;
+    opacity: 0.72 !important;
+    cursor: not-allowed !important;
+}
+
+body[data-theme="soft-light"] :is(button, input, select, textarea):focus-visible {
+    outline: 3px solid var(--light-focus);
+    outline-offset: 2px;
+}
+
+/* Settings: a quiet tinted frame around clearly separated white content. */
+body[data-theme="soft-light"] .settings-dialog {
+    background:
+        radial-gradient(circle at 8% 4%, rgba(250, 213, 190, 0.46), transparent 31%),
+        radial-gradient(circle at 94% 8%, rgba(217, 204, 239, 0.62), transparent 35%),
+        linear-gradient(145deg, #f8f4f2, #eeeaf7) !important;
+    border-color: #b9b4ca !important;
+    box-shadow: 0 28px 80px rgba(45, 37, 69, 0.22) !important;
+}
+
+body[data-theme="soft-light"] .settings-tabs {
+    background: #e7e3ef !important;
+    border-color: #bbb6c9 !important;
+}
+
+body[data-theme="soft-light"] .settings-tab { color: #555d70 !important; }
+
+body[data-theme="soft-light"] .settings-tab:hover:not(.active) {
+    color: #302c68 !important;
+    background: rgba(255, 255, 255, 0.62) !important;
+}
+
+body[data-theme="soft-light"] .settings-tab.active {
+    color: #3730a3 !important;
+    background: #ffffff !important;
+    border-color: #aaa6bd !important;
+    box-shadow: 0 4px 12px rgba(51, 43, 79, 0.13) !important;
+}
+
+body[data-theme="soft-light"] #settings-modal #btn-close-settings {
+    width: 36px;
+    height: 36px;
+    color: #39445c;
+    border-color: #a9a6ba;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 4px 12px rgba(51, 43, 79, 0.1);
+}
+
+body[data-theme="soft-light"] #settings-modal #btn-close-settings:hover {
+    color: #b42332;
+    border-color: #e8848d;
+    background: #fff1f2;
+}
+
+/* Shared modal controls: every light dialog gets a visible escape route. */
+body[data-theme="soft-light"] .modal-overlay .modal-close-btn,
+body[data-theme="soft-light"] .modal-overlay .cca-dialog-close {
+    color: #39445c !important;
+    border-color: #a9a6ba !important;
+    background: rgba(255, 255, 255, .9) !important;
+    box-shadow: 0 3px 10px rgba(51, 43, 79, .1) !important;
+}
+body[data-theme="soft-light"] .modal-overlay .modal-close-btn:hover,
+body[data-theme="soft-light"] .modal-overlay .cca-dialog-close:hover {
+    color: #b42332 !important;
+    border-color: #e8848d !important;
+    background: #fff1f2 !important;
+}
+
+body[data-theme="soft-light"] .modal-overlay .modal-dialog :is(input[type="text"], input[type="number"], input[type="search"], textarea, select) {
+    color: #182033 !important;
+    border-color: #9da4ba !important;
+    background: #ffffff !important;
+}
+body[data-theme="soft-light"] .modal-overlay .modal-dialog :is(input, textarea)::placeholder { color: #7b8497 !important; }
+
+body[data-theme="soft-light"] .session-modal-panel .btn-session-load {
+    color: #ffffff !important;
+    border-color: #3730a3 !important;
+    background: linear-gradient(135deg, #635bdf, #5146d9) !important;
+    box-shadow: 0 7px 16px rgba(79, 70, 229, .24) !important;
+}
+body[data-theme="soft-light"] .session-modal-panel .btn-session-cancel {
+    color: #273149 !important;
+    border-color: #9da4ba !important;
+    background: #ffffff !important;
+}
+
+body[data-theme="soft-light"] .settings-notification-strip {
+    color: var(--light-ink);
+    border-color: #b8b4c8;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(238, 234, 248, 0.88));
+    box-shadow: 0 6px 18px rgba(51, 43, 79, 0.08), inset 0 1px 0 #ffffff;
+}
+
+body[data-theme="soft-light"] .settings-notification-copy strong,
+body[data-theme="soft-light"] .settings-notification-control { color: #273149; }
+body[data-theme="soft-light"] .settings-notification-copy small { color: #626b7e; }
+
+/* Account manager: fix inherited dark-theme text and clarify every action. */
+body[data-theme="soft-light"] .ga-panel,
+body[data-theme="soft-light"] .ga-dialog {
+    --ga-surface: #f4f2f8;
+    --ga-surface-2: #ffffff;
+    --ga-line: #c8c5d5;
+    color: var(--light-ink);
+}
+
+body[data-theme="soft-light"] :is(.ga-stats article, .ga-workspace, .ga-dialog-card) {
+    background: #ffffff;
+    border-color: var(--ga-line);
+    box-shadow: 0 7px 20px rgba(51, 43, 79, 0.07);
+}
+
+body[data-theme="soft-light"] :is(.ga-toolbar, .ga-table thead) { background: #efedf5; }
+
+body[data-theme="soft-light"] :is(.ga-page-head h2, .ga-dialog h3, .ga-stats strong, .ga-account strong, .ga-balance, .ga-method strong) {
+    color: var(--light-ink);
+}
+
+body[data-theme="soft-light"] :is(.ga-page-head p, .ga-stats span, .ga-stats small, .ga-account span, .ga-table td, .ga-table-foot, .ga-method small) {
+    color: var(--light-ink-muted);
+}
+
+body[data-theme="soft-light"] .ga-search,
+body[data-theme="soft-light"] .ga-cookie-box textarea,
+body[data-theme="soft-light"] .ga-method {
+    color: var(--light-ink);
+    background: #ffffff;
+    border-color: var(--light-line);
+}
+
+body[data-theme="soft-light"] .ga-search input { color: var(--light-ink); }
+body[data-theme="soft-light"] .ga-dialog header p { color: #5c6578; }
+
+body[data-theme="soft-light"] .ga-method:is(.selected, :has(input:checked)) {
+    border-color: #5146d9;
+    background: linear-gradient(145deg, #f1efff, #e8edff);
+    box-shadow: 0 0 0 2px rgba(81, 70, 217, 0.16), 0 10px 24px rgba(67, 56, 202, 0.12);
+}
+
+body[data-theme="soft-light"] .ga-method:is(.selected, :has(input:checked))::after {
+    content: '✓ Selected';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    color: #ffffff;
+    background: #5146d9;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+
+body[data-theme="soft-light"] .ga-method:is(.selected, :has(input:checked)) .ga-method-icon {
+    color: #ffffff;
+    background: linear-gradient(135deg, #635bdf, #5146d9);
+    box-shadow: 0 6px 14px rgba(79, 70, 229, 0.24);
+}
+
+body[data-theme="soft-light"] .ga-method:focus-within {
+    outline: 3px solid var(--light-focus);
+    outline-offset: 2px;
+}
+
+body[data-theme="soft-light"] .ga-notice {
+    color: #4338ca;
+    background: #eef2ff;
+    border-color: #a9b3e8;
+}
+
+body[data-theme="soft-light"] .ga-notice strong { color: #29305f; }
+body[data-theme="soft-light"] .ga-notice span { color: #5d6680; }
+body[data-theme="soft-light"] .ga-notice button { color: #4338ca; }
+
+body[data-theme="soft-light"] .ga-btn:not(.ga-btn-primary):not(.ga-btn-danger) {
+    color: #273149;
+    background: #ffffff;
+    border-color: var(--light-line-strong);
+    box-shadow: 0 2px 5px rgba(36, 31, 55, 0.07);
+}
+
+body[data-theme="soft-light"] .ga-btn:not(.ga-btn-primary):not(.ga-btn-danger):hover {
+    color: #312e81;
+    background: var(--light-surface-blue);
+    border-color: #7169d9;
+}
+
+body[data-theme="soft-light"] .ga-btn-primary {
+    color: #ffffff !important;
+    border-color: #3730a3;
+    background: linear-gradient(135deg, #635bdf, var(--light-primary));
+    box-shadow: 0 7px 16px rgba(79, 70, 229, 0.24);
+}
+
+body[data-theme="soft-light"] .ga-filters button.active {
+    color: #312e81;
+    border-color: #8d86d8;
+    background: #e7e4fb;
+}
+
+body[data-theme="soft-light"] :is(.ga-row-action, .ga-icon-btn) {
+    color: #45516a;
+    background: #f3f2f7;
+    border-color: var(--light-line-strong);
+}
+
+body[data-theme="soft-light"] .fi-dialog :is(textarea, input, select) {
+    color: #182033;
+    border-color: #9da4ba !important;
+    background: #ffffff !important;
+}
+body[data-theme="soft-light"] :is(#page-flow-image-v2, #page-gemini-tts).fi-v2 .fi-dialog small,
+body[data-theme="soft-light"] #page-flow-video.fv .fv-dialog small { color: #5c6578; }

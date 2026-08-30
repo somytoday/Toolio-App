@@ -1,0 +1,30 @@
+/* ── Main Content ──────────────────────────────────── */
+
+.main-content {
+
+    flex: 0 0 calc(100% - 186px);
+
+    width: calc(100% - 186px);
+
+    max-width: calc(100% - 186px);
+
+    box-sizing: border-box;
+
+    margin-left: 186px;
+
+    padding: 36px 14px 12px 14px; /* top clears drag region */
+
+    min-height: 100vh;
+
+}
+
+
+
+/* ── Page Routing ──────────────────────────────────── */
+
+.page { display: block; }
+
+.page.hidden { display: none; }
+
+
+

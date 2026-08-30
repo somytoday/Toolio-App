@@ -1,0 +1,46 @@
+/* Explicit help icon only. It never intercepts native title attributes. */
+.toolio-info-tip {
+    position: relative;
+    margin-inline-start: 4px;
+    cursor: help;
+    opacity: 0.5;
+    font-size: 12px;
+    transition: opacity var(--transition-fast);
+}
+
+.toolio-info-tip:hover,
+.toolio-info-tip:focus { opacity: 1; }
+.toolio-info-tip:focus-visible {
+    outline: 2px solid rgba(74, 222, 255, .8);
+    outline-offset: 2px;
+}
+
+.toolio-info-tip-popover {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    z-index: 10020;
+    width: max-content;
+    min-width: 180px;
+    max-width: min(260px, calc(100vw - 24px));
+    padding: 8px 12px;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: var(--radius-md, 10px);
+    color: var(--text-secondary, #a1a1aa);
+    background: rgba(10, 10, 20, 0.95);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: start;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    pointer-events: none;
+    animation: toolio-info-tip-in .1s ease-out;
+}
+
+@keyframes toolio-info-tip-in { from { opacity: 0; transform: translateY(3px); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .toolio-info-tip-popover { animation: none; }
+}

@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://esm.sh; connect-src 'self' https://bhbvzkogznvejhfrveqb.supabase.co; style-src 'self'; img-src 'self' data: https:; base-uri 'none'; object-src 'none'">
+  <title>Toolio Admin Dashboard</title>
+  <link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-block">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <div>
+          <p class="eyebrow">Toolio Control Center</p>
+          <h1>Admin Dashboard</h1>
+          <p class="muted">Users, access, recharge codes, and app health in one place.</p>
+        </div>
+      </div>
+      <div class="auth-box">
+        <span id="admin-email">Not signed in</span>
+        <button id="btn-login" class="btn primary">Login with Google</button>
+        <button id="btn-logout" class="btn ghost hidden">Logout</button>
+      </div>
+    </header>
+
+    <section id="locked" class="card locked">
+      <span class="locked-icon" aria-hidden="true">🔒</span>
+      <h2>Admin access required</h2>
+      <p>Sign in with the admin Google account to open this dashboard.</p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="stats-grid" aria-label="Dashboard summary">
+        <article class="stat"><span>App Users</span><strong id="stat-total">-</strong></article>
+        <article class="stat"><span>Store Customers</span><strong id="stat-store-customers">-</strong></article>
+        <article class="stat"><span>Online Now</span><strong id="stat-online">-</strong></article>
+        <article class="stat"><span>Trial</span><strong id="stat-trial">-</strong></article>
+        <article class="stat"><span>Paid</span><strong id="stat-paid">-</strong></article>
+        <article class="stat"><span>Free</span><strong id="stat-free">-</strong></article>
+        <article class="stat"><span>Unused Codes</span><strong id="stat-codes">-</strong></article>
+        <article class="stat"><span>App Status</span><strong id="stat-app">-</strong></article>
+      </div>
+
+      <nav class="admin-tabs" role="tablist" aria-label="Admin sections">
+        <button class="admin-tab active" role="tab" aria-selected="true" data-admin-tab="users">Users</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-admin-tab="codes">Recharge Codes</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-admin-tab="access">Access &amp; App</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-admin-tab="tools">Tools</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-admin-tab="commerce">Commerce</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-admin-tab="suggestions">Suggestions</button>
+        <button class="admin-tab" role="tab" aria-selected="false" data-admin-tab="logs">Admin Logs</button>
+        <button id="btn-refresh" class="btn refresh-btn" aria-label="Refresh dashboard data">↻ Refresh</button>
+      </nav>
+
+      <section class="admin-panel" data-admin-panel="users" role="tabpanel">
+        <section class="card users-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Member management</p>
+              <h2>Users</h2>
+              <p class="muted">Search members, check access, and open a complete activity record.</p>
+            </div>
+            <input id="user-search" class="search-input" type="search" placeholder="Search name, email, ID, device, or code..." aria-label="Search users">
+          </div>
+
+          <div class="online-strip">
+            <span class="online-label"><i aria-hidden="true"></i> Online now</span>
+            <div id="online-users" class="online-list muted">No online users</div>
+          </div>
+
+          <aside class="user-audience-switcher" aria-label="User groups">
+            <button class="user-audience active" data-user-audience="app">
+              <span>App Users</span><strong id="app-users-count">0</strong>
+              <small>Activated Toolio devices</small>
+            </button>
+            <button class="user-audience" data-user-audience="store">
+              <span>Store Customers</span><strong id="store-users-count">0</strong>
+              <small>Website and store accounts</small>
+            </button>
+            <button class="user-audience" data-user-audience="all">
+              <span>All Identities</span><strong id="all-users-count">0</strong>
+              <small>Combined, without duplicates</small>
+            </button>
+          </aside>
+
+          <div class="toolbar">
+            <div class="filters" aria-label="Filter users">
+              <button class="btn filter-btn user-filter active" data-user-filter="all">All</button>
+              <button class="btn filter-btn user-filter" data-user-filter="paid">Paid</button>
+              <button class="btn filter-btn user-filter" data-user-filter="trial">Trial</button>
+              <button class="btn filter-btn user-filter" data-user-filter="expired">Expired</button>
+              <button class="btn filter-btn user-filter" data-user-filter="blocked">Blocked</button>
+              <button class="btn filter-btn user-filter" data-user-filter="online">Online</button>
+              <button class="btn filter-btn user-filter" data-user-filter="expiring">Expiring Soon</button>
+            </div>
+            <div class="export-actions">
+              <button id="btn-export-users-csv" class="btn ghost">Export CSV</button>
+              <button id="btn-export-users-txt" class="btn ghost">Export TXT</button>
+            </div>
+          </div>
+
+          <div class="table-summary">
+            <span id="users-result-count">0 users</span>
+            <span class="muted">Click Details to see every code and admin grant.</span>
+          </div>
+
+          <div class="table-wrap data-table-viewport users-table-wrap">
+            <table class="users-table">
+              <thead>
+                <tr><th>User</th><th>Subscription</th><th>Device &amp; Activity</th><th>Codes Used</th><th>Last Seen</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="users-body"></tbody>
+            </table>
+          </div>
+
+          <footer class="table-footer">
+            <span id="users-page-label" class="muted">Page 1 of 1</span>
+            <div class="pagination">
+              <button id="btn-users-prev" class="btn ghost" disabled>← Previous</button>
+              <button id="btn-users-next" class="btn ghost" disabled>Next →</button>
+            </div>
+          </footer>
+        </section>
+      </section>
+
+      <section class="admin-panel hidden" data-admin-panel="codes" role="tabpanel">
+        <div class="workspace-grid codes-workspace">
+          <section class="card create-card">
+            <div class="section-heading compact">
+              <div><p class="section-kicker">Create access</p><h2>Generate Codes</h2></div>
+            </div>
+            <div class="form-grid">
+              <label>Count <input id="code-count" type="number" min="1" max="500" value="1"></label>
+              <label>Days <input id="code-days" type="number" min="1" value="30"></label>
+              <label>Valid for days <input id="code-valid-days" type="number" min="1" placeholder="No expiry"></label>
+              <label>Max uses <input id="code-max-uses" type="number" min="1" placeholder="1, blank = unlimited"></label>
+              <label class="wide">Label <input id="code-label" placeholder="Seller or batch label"></label>
+              <label class="wide">Custom code <input id="code-custom" placeholder="Example: MR-AUTOMATION"></label>
+            </div>
+            <div class="actions">
+              <button id="btn-generate" class="btn primary">Generate</button>
+              <button id="btn-copy-generated" class="btn ghost">Copy Generated</button>
+            </div>
+            <textarea id="generated-codes" readonly placeholder="Generated codes appear here"></textarea>
+          </section>
+
+          <section class="card codes-list-card">
+            <div class="section-heading compact">
+              <div><p class="section-kicker">Code library</p><h2>Recharge Codes</h2></div>
+              <input id="code-search" class="search-input" type="search" placeholder="Search code, label, user, or status..." aria-label="Search recharge codes">
+            </div>
+            <div class="toolbar">
+              <div class="filters" aria-label="Filter recharge codes">
+                <button class="btn filter-btn code-filter active" data-code-filter="all">All</button>
+                <button class="btn filter-btn code-filter" data-code-filter="unused">Unused</button>
+                <button class="btn filter-btn code-filter" data-code-filter="active">Active</button>
+                <button class="btn filter-btn code-filter" data-code-filter="used">Used</button>
+                <button class="btn filter-btn code-filter" data-code-filter="disabled">Disabled</button>
+              </div>
+              <div class="export-actions">
+                <button id="btn-copy-visible-codes" class="btn ghost">Copy Visible</button>
+                <button id="btn-export-codes-csv" class="btn ghost">CSV</button>
+                <button id="btn-export-codes-txt" class="btn ghost">TXT</button>
+              </div>
+            </div>
+            <div id="code-search-result" class="search-result hidden"></div>
+            <div class="table-summary"><span id="codes-result-count">0 codes</span></div>
+            <div class="table-wrap data-table-viewport">
+              <table class="codes-table">
+                <thead><tr><th>Code</th><th>Status</th><th>Days</th><th>Uses</th><th>Label</th><th>Expires</th><th>Used By</th><th>Created</th><th>Actions</th></tr></thead>
+                <tbody id="codes-body"></tbody>
+              </table>
+            </div>
+            <footer class="table-footer">
+              <span id="codes-page-label" class="muted">Page 1 of 1</span>
+              <div class="pagination">
+                <button id="btn-codes-prev" class="btn ghost" disabled>← Previous</button>
+                <button id="btn-codes-next" class="btn ghost" disabled>Next →</button>
+              </div>
+            </footer>
+          </section>
+        </div>
+      </section>
+
+      <section class="admin-panel hidden" data-admin-panel="access" role="tabpanel">
+        <div class="workspace-grid access-workspace">
+          <section id="grant-card" class="card">
+            <p class="section-kicker">Subscription access</p>
+            <h2>Grant or Adjust Days</h2>
+            <div class="form-grid">
+              <label class="wide">User ID <input id="grant-user-id" placeholder="UUID, optional if email is filled"></label>
+              <label class="wide">Email <input id="grant-email" placeholder="user@email.com"></label>
+              <label>Days <input id="grant-days" type="number" min="1" value="30"></label>
+              <label class="wide">Reason <input id="grant-reason" placeholder="Optional note"></label>
+            </div>
+            <div class="actions">
+              <button id="btn-grant-user" class="btn primary">Grant User</button>
+              <button id="btn-grant-all" class="btn warn">Grant All Users</button>
+            </div>
+            <div class="subsection">
+              <h3>Adjust existing days</h3>
+              <div class="form-grid">
+                <label class="wide">User ID <input id="adjust-user-id" placeholder="UUID"></label>
+                <label>Days +/- <input id="adjust-days" type="number" value="-1"></label>
+                <label class="wide">Reason <input id="adjust-reason" placeholder="Optional note"></label>
+              </div>
+              <button id="btn-adjust-user" class="btn danger">Adjust User Days</button>
+            </div>
+          </section>
+
+          <section id="transfer-card" class="card">
+            <p class="section-kicker">Device access</p>
+            <h2>Device Transfer Allowance</h2>
+            <div class="form-grid">
+              <label class="wide">User ID <input id="transfer-user-id" placeholder="UUID"></label>
+              <label>Extra transfers <input id="transfer-extra" type="number" min="1" max="3" value="1"></label>
+              <label class="wide">Reason <input id="transfer-reason" placeholder="Optional note"></label>
+            </div>
+            <button id="btn-transfer-grant" class="btn primary">Grant Transfer Allowance</button>
+          </section>
+
+          <section class="card">
+            <p class="section-kicker">Global availability</p>
+            <h2>App Guard</h2>
+            <div class="form-grid">
+              <label class="wide">Maintenance Message <input id="guard-message" value="Toolio is temporarily under maintenance."></label>
+              <label class="wide">Block Message <input id="block-message" placeholder="Optional custom block reason..."></label>
+            </div>
+            <div class="actions">
+              <button id="btn-app-on" class="btn primary">Enable App</button>
+              <button id="btn-app-off" class="btn danger">Disable App</button>
+              <button id="btn-app-save" class="btn secondary" style="margin-left: auto;">Save Messages</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <p class="section-kicker">Desktop releases</p>
+            <h2>Version Control</h2>
+            <div class="form-grid">
+              <label>Latest <input id="version-latest" placeholder="e.g. 1.0.0"></label>
+              <label>Minimum <input id="version-minimum" placeholder="e.g. 1.0.0"></label>
+              <label class="wide">Download URL <input id="version-url" placeholder="https://..."></label>
+              <label class="wide">SHA-256 Hash <input id="version-sha256" placeholder="Optional checksum for secure updates"></label>
+              <label class="wide">Force Message <input id="version-message" placeholder="Optional mandatory update message"></label>
+            </div>
+            <button id="btn-version-save" class="btn primary">Save Version</button>
+          </section>
+        </div>
+      </section>
+
+      <section class="admin-panel hidden" data-admin-panel="tools" role="tabpanel">
+        <section class="card tools-control-card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Release controls</p>
+              <h2>Tool Availability</h2>
+              <p class="muted">Maintenance always takes priority over subscription status. Hidden tools disappear from the workspace completely.</p>
+            </div>
+            <button id="btn-refresh-tools" class="btn ghost">Refresh Tools</button>
+          </div>
+          <div class="tool-state-legend" aria-label="Tool state meanings">
+            <span class="pill good">Live</span><span class="muted">Available normally</span>
+            <span class="pill warn">Maintenance</span><span class="muted">Visible with a maintenance notice</span>
+            <span class="pill bad">Hidden</span><span class="muted">Removed from the workspace</span>
+          </div>
+          <p class="tool-control-safety">New work is blocked immediately. Work already submitted is allowed to finish safely.</p>
+          <div id="tool-controls" class="tool-controls" aria-live="polite">
+            <p class="muted">Loading tool controls...</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="admin-panel hidden" data-admin-panel="logs" role="tabpanel">
+        <section class="card logs-card">
+          <div class="section-heading">
+            <div><p class="section-kicker">Audit trail</p><h2>Admin Logs</h2><p class="muted">Latest 100 admin actions.</p></div>
+          </div>
+          <div class="table-wrap data-table-viewport logs-viewport">
+            <table>
+              <thead><tr><th>Action</th><th>Target</th><th>Details</th><th>Time</th></tr></thead>
+              <tbody id="logs-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section class="admin-panel hidden commerce-panel" data-admin-panel="commerce" role="tabpanel">
+        <div class="commerce-grid">
+          <section class="card commerce-offer-card">
+            <p class="section-kicker">Published offer</p>
+            <h2>Price and duration</h2>
+            <p class="muted">The desktop app and store read this same USD offer.</p>
+            <div class="form-grid">
+              <label class="wide">Offer name <input id="commerce-offer-name" maxlength="80"></label>
+              <label>USD price <input id="commerce-price-usd" type="number" min="0.50" max="10000" step="0.01"></label>
+              <label>Duration days <input id="commerce-duration-days" type="number" min="1" max="3650" step="1"></label>
+            </div>
+            <div class="actions">
+              <button id="btn-commerce-save-offer" class="btn secondary">Save draft</button>
+              <button id="btn-commerce-publish-offer" class="btn primary">Publish draft</button>
+            </div>
+          </section>
+
+          <section class="card commerce-rates-card">
+            <p class="section-kicker">Local estimates</p>
+            <h2>Currency rates</h2>
+            <p class="muted">Enter units of local currency per 1 USD. These are labeled as estimates.</p>
+            <div id="commerce-rates" class="commerce-list"></div>
+          </section>
+
+          <section class="card commerce-methods-card">
+            <p class="section-kicker">Checkout</p>
+            <h2>Payment methods</h2>
+            <p class="muted">A method cannot be enabled until its real destination and customer instructions are saved. Initial verification is manual.</p>
+            <div id="commerce-methods" class="commerce-list"></div>
+          </section>
+
+          <section class="card commerce-reviews-card">
+            <div class="section-heading"><div><p class="section-kicker">Fulfillment</p><h2>Payments awaiting review</h2></div><button id="btn-commerce-refresh" class="btn ghost">Refresh</button></div>
+            <div id="commerce-pending" class="commerce-list"><p class="muted">No pending payments.</p></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="admin-panel hidden suggestions-admin-panel" data-admin-panel="suggestions" role="tabpanel">
+        <section class="card">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Community moderation</p>
+              <h2>Suggestions</h2>
+              <p class="muted">Approve public ideas separately from their roadmap status.</p>
+            </div>
+            <div class="suggestions-admin-toolbar">
+              <label for="admin-suggestions-filter">Moderation status</label>
+              <select id="admin-suggestions-filter">
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+                <option value="hidden">Hidden</option>
+                <option value="all">All</option>
+              </select>
+              <button id="btn-refresh-suggestions" class="btn ghost" type="button">Refresh</button>
+            </div>
+          </div>
+          <p id="admin-suggestions-status" class="muted" role="status" aria-live="polite"></p>
+          <div id="admin-suggestions-list" class="suggestions-admin-list"></div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <div id="user-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="user-modal-title">
+    <div class="modal-card">
+      <button id="btn-close-user-modal" class="modal-close" aria-label="Close user details">×</button>
+      <div id="user-modal-body"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script type="module" src="/admin/app.js"></script>
+</body>
+</html>
