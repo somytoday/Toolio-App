@@ -1,0 +1,54 @@
+name: Toolio Website Preview
+
+on:
+  push:
+    branches:
+      - codex/toolio-website-preview
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: toolio-website-preview
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out preview branch
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Deploy preview to Vercel
+        id: deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_TELEMETRY_DISABLED: '1'
+        shell: bash
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "Missing repository secret: VERCEL_TOKEN" >&2
+            exit 1
+          fi
+
+          deployment_url="$(npx --yes vercel@59.10.0 deploy website \
+            --yes \
+            --no-color \
+            --archive=tgz \
+            --target=preview \
+            --project=toolio-live \
+            --token="$VERCEL_TOKEN")"
+
+          echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
+          echo "### Toolio preview" >> "$GITHUB_STEP_SUMMARY"
+          echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Show preview URL
+        run: echo "${{ steps.deploy.outputs.url }}"
