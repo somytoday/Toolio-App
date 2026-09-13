@@ -6,7 +6,7 @@
   <p>Desktop automation workflows for AI image, video, voice, and creator utilities.</p>
   <p>
     <a href="https://github.com/somytoday/Toolio-Automation/releases/latest">
-      <img src="https://img.shields.io/badge/version-1.0.8-635BFF.svg?style=for-the-badge" alt="Latest Toolio release: 1.0.8" />
+      <img src="https://img.shields.io/badge/version-1.1.6-635BFF.svg?style=for-the-badge" alt="Latest Toolio release: 1.1.6" />
     </a>
     <a href="https://toolio.live/download/">
       <img src="https://img.shields.io/badge/platform-Windows-0078D6.svg?style=for-the-badge&logo=windows" alt="Download Toolio for Windows" />
@@ -23,12 +23,12 @@
 
 ## ✨ About Toolio
 
-Toolio Automation helps creators organize and run repetitive media workflows from one Windows desktop application. Version 1.0.8 introduces the production-ready Flow Image, Flow Video, and Gemini TTS workflows alongside Toolio's existing media utilities.
+Toolio Automation helps creators organize and run repetitive media workflows from one Windows desktop application. Version 1.1.6 expands Flow video options, improves generation recovery and error guidance, adds profile avatar customization, and strengthens protected Windows builds.
 
 > [!IMPORTANT]
 > Toolio is an automation assistant. Google accounts, generation credits, API credits, and third-party subscriptions are not included. Users must supply and manage the accounts and credits required by each supported service.
 
-## 🚀 Available in 1.0.8
+## 🚀 Available in 1.1.6
 
 - **🎨 Flow Image** — create image batches from prompts and references with parallel jobs, progress tracking, saved work, and output management.
 - **🎬 Flow Video** — create and manage video batches using Text/Frames, Ingredients, and Scene Chain workflows.
@@ -54,4 +54,4 @@ The Toolio website is available at [toolio.live](https://toolio.live/). The Tool
 
 ## 📝 Release Notes
 
-See [Toolio Automation 1.0.8 release notes](docs/releases/v1.0.8.md).
+See [Toolio Automation 1.1.6 release notes](docs/releases/v1.1.6.md).
