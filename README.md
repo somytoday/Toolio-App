@@ -48,10 +48,3 @@ Toolio Automation helps creators organize and run repetitive media workflows fro
 - Recoverable saved work for generation workflows.
 - Managed updates with integrity checks and safe restart handling.
 
-## 🛍️ Store
-
-The Toolio website is available at [toolio.live](https://toolio.live/). The Toolio Store and its purchasing workflows are still being prepared and should be treated as **Coming Soon** until officially announced.
-
-## 📝 Release Notes
-
-See [Toolio Automation 1.1.6 release notes](docs/releases/v1.1.6.md).
